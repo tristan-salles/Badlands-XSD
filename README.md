@@ -1,0 +1,4 @@
+XsD
+===
+
+badlands validation schema
