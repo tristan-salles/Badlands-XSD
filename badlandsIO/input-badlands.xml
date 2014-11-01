@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lecode:lecodeInput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:lecode="http://subversion.assembla.com/svn/xsd/XSDlecode"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xsi:schemaLocation="http://subversion.assembla.com/svn/xsd/XSDlecode
+  http://subversion.assembla.com/svn/xsd/XSDlecode/LECODEv3.xsd">
+
+	<struct-mesh>
+
+		<Strata_grid>
+			<gridName>res/input.nodes</gridName>
+			<gridX>300</gridX>
+			<gridY>360</gridY>
+			<procGrid>4</procGrid>
+			<boundConds>0 0 0 0</boundConds>
+			<noiseDist>2</noiseDist>
+		</Strata_grid>
+
+		<!--Restart>
+      <restartFolder>ambra_test</restartFolder>
+      <restartIt>40</restartIt>
+    </Restart-->
+
+	</struct-mesh>
+
+	<struct-time>
+
+		<Time>
+			<startTime>0</startTime>
+			<endTime>100</endTime>
+			<layerTime>25</layerTime>
+			<outputTime>50</outputTime>
+			<flowInterval>50</flowInterval>
+			<rainInterval>25</rainInterval>
+			<samplingInterval>25</samplingInterval>
+		</Time>
+
+		<!--CheckPointing>
+      <frequency>2</frequency>
+    </CheckPointing-->
+
+	</struct-time>
+
+	<struct-ocean>
+
+		<SeaLevelFluctuations>
+			<seaLevelFile>sea.sl</seaLevelFile>
+		</SeaLevelFluctuations>
+
+		<!--HemipelagicRates>
+      <hemipelagicFile>hemi.rates</hemipelagicFile>
+    </HemipelagicRates-->
+
+	</struct-ocean>
+
+	<struct-geodyn>
+		<!--Displacement>
+    <nbDispInterval>1</nbDispInterval>
+      <disp>
+        <startDispTime>0</startDispTime>
+        <endDispTime>50</endDispTime>
+        <dispFile>res/valley.disp</dispFile>
+      </disp>
+    </Displacement-->
+		
+		<!--Flexure>
+      <flexuralInterval>1000</flexuralInterval>
+  		<flexuralRigidity>10e22</flexuralRigidity>
+  		<crustDensity>3300</crustDensity>
+  	</Flexure-->
+		
+	</struct-geodyn>
+
+	<struct-sediments>
+		<Materials>
+			<nbSiliciclastics>1</nbSiliciclastics>
+			<minSlope>0.0001</minSlope>
+			<si>
+				<materialName>basement_sand</materialName>
+				<diameter>0.25</diameter>
+				<density>2650.0</density>
+				<slopeMarine>0.2</slopeMarine>
+				<creepMarine>2.0</creepMarine>
+				<slopeAerial>0.015</slopeAerial>
+				<creepAerial>4.0</creepAerial>
+				<erodibility>1.e-4</erodibility>
+				<transportEff>0.3</transportEff>
+			</si>
+		</Materials>
+
+		<Init_deposit>
+			<layersNb>2</layersNb>
+			<dep>
+				<fileName>res/layer1.dep</fileName>
+			</dep>
+			<dep>
+				<fileName>res/layer2.dep</fileName>
+			</dep>
+		</Init_deposit>
+
+		<Soil_definition>
+			<soilProductionPo>0.0005</soilProductionPo>
+			<soilProductionho>0.5</soilProductionho>
+			<soilInitialThickness>0.0</soilInitialThickness>
+		</Soil_definition>
+
+	</struct-sediments>
+
+	<struct-processes>
+
+		<RainfallGrid>
+			<nbRainfallInterval>1</nbRainfallInterval>
+			<rain>
+				<startTime>0</startTime>
+				<endTime>6000</endTime>
+				<rainFile>res/2rain.rain</rainFile>
+			</rain>
+		</RainfallGrid>
+
+		<Sources>
+			<realeaseInterval>1</realeaseInterval>
+			<totalSourcesNb>1</totalSourcesNb>
+			<sourceVal>
+				<ts>0</ts>
+				<te>10000</te>
+				<x>226015</x>
+				<y>4816606</y>
+				<xRange>0</xRange>
+				<yRange>0</yRange>
+				<Vx>0</Vx>
+				<Vy>-2.00</Vy>
+				<Q>300</Q>
+				<Qs>5</Qs>
+				<sedConcentration>100.0</sedConcentration>
+				<flowType>0</flowType>
+			</sourceVal>
+		</Sources>
+
+	</struct-processes>
+
+	<struct-param>
+
+		<HydraulicsParameters>
+			<stepFill>0.01</stepFill>
+			<kwidth>1.2</kwidth>
+			<awidth>0.38</awidth>
+			<bwidth>-0.44</bwidth>
+		</HydraulicsParameters>
+
+		<EroDepParameters>
+			<transportMode>2</transportMode>
+			<mdetach>0.33</mdetach>
+			<ndetach>0.66</ndetach>
+			<mtransport>1.5</mtransport>
+			<ntransport>1.0</ntransport>
+			<fwErosionTrigger>0.01</fwErosionTrigger>
+			<manningOpenChannel>0.025</manningOpenChannel>
+			<manningHyperpycnal>0.01</manningHyperpycnal>
+			<manningHypopycnal>0.080</manningHypopycnal>
+			<maxSoilDepthMarine>1</maxSoilDepthMarine>
+			<maxSoilDepthAerial>4</maxSoilDepthAerial>
+		</EroDepParameters>
+
+		<!--Porosity>
+      <depositPorosity>0.25</depositPorosity>
+      <effPressureNb>6</effPressureNb>
+      <porosityFile>poro.csv</porosityFile>
+    </Porosity-->
+
+		<MassWastingParameters>
+			<massMovementOn>1</massMovementOn>
+			<maxConcAerial>0.5</maxConcAerial>
+			<maxConcMarine>0.55</maxConcMarine>
+			<factorAerial>0.5</factorAerial>
+			<factorMarine>0.75</factorMarine>
+			<criticalSlopeAerial>40</criticalSlopeAerial>
+			<criticalSlopeMarine>45</criticalSlopeMarine>
+		</MassWastingParameters>
+
+	</struct-param>
+
+	<struct-output>
+		<outputDir>test</outputDir>
+		<outputSea>1</outputSea>
+		<outputFWs>1</outputFWs>
+	</struct-output>
+
+	<struct-plugin>
+		<!--UnderworldPlugin>
+      <usyncFolder>here</usyncFolder>
+      <usyncTime>50</usyncTime>
+    </UnderworldPlugin-->
+	</struct-plugin>
+
+</lecode:lecodeInput>
